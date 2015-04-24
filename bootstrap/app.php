@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-// Dotenv::load(__DIR__.'/../');
+Dotenv::load(__DIR__.'/../');
 
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +63,9 @@ $app->singleton(
 //     // 'Laravel\Lumen\Http\Middleware\VerifyCsrfToken',
 // ]);
 
-// $app->routeMiddleware([
-
-// ]);
+$app->routeMiddleware([
+    'auth' => 'App\Http\Middleware\ChefkochAuthMiddleware',
+]);
 
 /*
 |--------------------------------------------------------------------------

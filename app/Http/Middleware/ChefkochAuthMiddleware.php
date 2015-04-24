@@ -2,7 +2,7 @@
 
 use Closure;
 
-class ExampleMiddleware {
+class ChefkochAuthMiddleware {
 
     /**
      * Handle an incoming request.

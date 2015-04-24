@@ -1,16 +1,45 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+$app->group([
+    'middleware' => 'auth',
+    'prefix' => 'admin',
+    'namespace' => 'App\Http\Controllers',
 
-$app->get('/', function() use ($app) {
-    return $app->welcome();
+], function ($app) {
+    $app->post('/login', [
+        'as' => 'login',
+        'uses' => 'AdminController@login'
+    ]);
+    $app->get('/logout', [
+        'as' => 'logout',
+        'uses' => 'AdminController@logout'
+    ]);
+    $app->get('/me', [
+        'as' => 'me',
+        'uses' => 'AdminController@me'
+    ]);
+
+    $app->get('/', [
+        'as' => 'index',
+        'uses' => 'AdminController@index'
+    ]);
+    $app->post('/', [
+        'as' => 'create',
+        'uses' => 'AdminController@create'
+    ]);
+    $app->put('/{key:[-\w]+}', [
+        'as' => 'update',
+        'uses' => 'AdminController@update'
+    ]);
+});
+
+/*
+ * The frontend which does the actual redirecting
+ */
+$app->get('/{key:[-\w]*}', function($key) use ($app) {
+    $target = $app['db']->table('link')->where('key', $key)->pluck('target');
+    if ($target) {
+        return redirect($target);
+    }
+    return redirect('http://chefkoch.de/');
 });
