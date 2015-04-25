@@ -64,7 +64,7 @@ $app->singleton(
 // ]);
 
 $app->routeMiddleware([
-    'auth' => 'App\Http\Middleware\ChefkochAuthMiddleware',
+    'auth.chefkoch' => 'App\Http\Middleware\ChefkochAuthMiddleware',
 ]);
 
 /*

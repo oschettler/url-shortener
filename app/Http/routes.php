@@ -1,8 +1,7 @@
 <?php
 
 $app->group([
-    'middleware' => 'auth',
-    'prefix' => 'admin',
+    'prefix' => 'api',
     'namespace' => 'App\Http\Controllers',
 
 ], function ($app) {
@@ -10,18 +9,25 @@ $app->group([
         'as' => 'login',
         'uses' => 'AdminController@login'
     ]);
-    $app->get('/logout', [
-        'as' => 'logout',
-        'uses' => 'AdminController@logout'
-    ]);
+});
+
+$app->group([
+    'middleware' => 'auth.chefkoch',
+    'prefix' => 'api',
+    'namespace' => 'App\Http\Controllers',
+
+], function ($app) {
     $app->get('/me', [
         'as' => 'me',
         'uses' => 'AdminController@me'
     ]);
-
+    $app->get('/logout', [
+        'as' => 'logout',
+        'uses' => 'AdminController@logout'
+    ]);
     $app->get('/', [
-        'as' => 'index',
-        'uses' => 'AdminController@index'
+        'as' => 'links',
+        'uses' => 'AdminController@links'
     ]);
     $app->post('/', [
         'as' => 'create',
@@ -34,6 +40,13 @@ $app->group([
 });
 
 /*
+ * The backend to manipulate links
+ */
+$app->get('/admin', function() {
+    return view('admin');
+});
+
+/*
  * The frontend which does the actual redirecting
  */
 $app->get('/{key:[-\w]*}', function($key) use ($app) {
@@ -41,5 +54,5 @@ $app->get('/{key:[-\w]*}', function($key) use ($app) {
     if ($target) {
         return redirect($target);
     }
-    return redirect('http://chefkoch.de/');
+    return redirect(getenv('APP_DEFAULT_URL'));
 });

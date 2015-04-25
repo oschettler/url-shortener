@@ -1222,16 +1222,16 @@
         },
         {
             "name": "laravel/lumen-framework",
-            "version": "v5.0.5",
+            "version": "v5.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/lumen-framework.git",
-                "reference": "e66451cc5647cf44906ae73f454e94ba0b6ff69f"
+                "reference": "13989be82d4ef03892d9567da9c5b07210b747db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/lumen-framework/zipball/e66451cc5647cf44906ae73f454e94ba0b6ff69f",
-                "reference": "e66451cc5647cf44906ae73f454e94ba0b6ff69f",
+                "url": "https://api.github.com/repos/laravel/lumen-framework/zipball/13989be82d4ef03892d9567da9c5b07210b747db",
+                "reference": "13989be82d4ef03892d9567da9c5b07210b747db",
                 "shasum": ""
             },
             "require": {
@@ -1306,7 +1306,7 @@
                 "laravel",
                 "lumen"
             ],
-            "time": "2015-04-24 02:35:38"
+            "time": "2015-04-24 17:33:46"
         },
         {
             "name": "league/flysystem",
