@@ -46,7 +46,7 @@ $app->get('/admin', function() {
  * The frontend which does the actual redirecting
  */
 $app->get('/{key:[-\w]*}', function($key) use ($app) {
-    $target = $app['db']->table('link')->where('key', $key)->pluck('target');
+    $target = $app['db']->table('links')->where('key', $key)->pluck('target');
     if ($target) {
         return redirect($target);
     }
