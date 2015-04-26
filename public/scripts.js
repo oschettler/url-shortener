@@ -2,6 +2,8 @@
  *
  */
 jQuery(function ($) {
+    var linksTag;
+
     function showLogin() {
         console.log("Login");
         delete localStorage['token'];
@@ -14,15 +16,22 @@ jQuery(function ($) {
         console.log("Links");
         $('#login').addClass('hidden');
         $('#links').removeClass('hidden');
+
+        api('/api', {
+           success: function (response) {
+               linksTag = riot.mount('links', { links: response });
+           }
+        });
     }
 
-    function api(url, settings) {
+    window.api = function (url, settings) {
         if (typeof localStorage['token'] !== 'undefined') {
             settings.headers = { 'X-Chefkoch-Api-Token': localStorage['token'] };
         }
 
         settings.cache = false;
         settings.dataType = 'json'; // From the server
+
         $.ajax(url, settings);
     }
 
@@ -61,9 +70,6 @@ jQuery(function ($) {
 
     $('#logout').click(function (e) {
         e.preventDefault();
-
-        api('/api/logout', {
-            complete: showLogin
-        });
+        showLogin();
     });
 });

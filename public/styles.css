@@ -14,3 +14,24 @@
 .buttons {
     text-align: right;
 }
+
+.pagination {
+    width: 100%;
+}
+
+.pagination ul {
+    margin: 0 auto;
+    list-style-type: none;
+}
+
+.pagination ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.pagination ul li a {
+    display: block;
+    padding: 4px;
+    border: solid 1px #CCC;
+    text-decoration: none;
+}

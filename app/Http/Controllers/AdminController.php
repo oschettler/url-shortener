@@ -1,14 +1,10 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Api;
-use App\Http\Middleware\ChefkochAuthMiddleware;
+use App\Model\Link;
 
 class AdminController extends Controller {
-
-    const TOKEN_HEADER = 'X-Chefkoch-Api-Token';
 
     public function login(Request $request) {
         $input = $request->only('username', 'password');
@@ -17,23 +13,29 @@ class AdminController extends Controller {
         );
     }
 
-    public function logout() {
-        return "Logout";
-    }
-
-    public function me(Request $request) {
-        return response(json_encode(true));
+    public function me() {
+        return response()->json(true);
     }
 
     public function links() {
-        return "list";
+        return response()->json(Link::all());
     }
 
-    public function create() {
-        return "create";
+    public function create(Request $request) {
+        $input = $request->only('key', 'target');
+        $link = new Link;
+        $link->key = $input['key'];
+        $link->target = $input['target'];
+        $link->save();
+        return response()->json([true, $input]);
     }
 
-    public function update($key) {
-        return "update";
+    public function update(Request $request, $key) {
+        $input = $request->only('key', 'target');
+        $link = Link::where('key', '=', $key)->firstOrFail();
+        $link->key = $input['key'];
+        $link->target = $input['target'];
+        $link->save();
+        return response()->json([true, $key, $input]);
     }
 }

@@ -32,11 +32,13 @@
 
             <div id="links" class="row hidden">
                 <a href="#" class="u-pull-right" id="logout">Logout</a>
-                <ul></ul>
+                <links></links>
             </div>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/g/riot@2.0(riot.min.js+compiler.min.js)"></script>
+        <script type="riot/tag" src="/links.tag.js"></script>
         <script src="/scripts.js"></script>
     </body>
 </html>

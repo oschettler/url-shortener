@@ -21,10 +21,6 @@ $app->group([
         'as' => 'me',
         'uses' => 'AdminController@me'
     ]);
-    $app->get('/logout', [
-        'as' => 'logout',
-        'uses' => 'AdminController@logout'
-    ]);
     $app->get('/', [
         'as' => 'links',
         'uses' => 'AdminController@links'
