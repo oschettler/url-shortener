@@ -10,6 +10,15 @@ You can use this account to log in and edit existing links or create new ones.
 
 ![Admin screen](https://raw.githubusercontent.com/oschettler/url-shortener/master/public/img/admin.png)
 
+## Installation
+
+You need an SQlite database in `storage/database.sqlite`. Create it with
+
+````shell
+sqlite3 storage/database.sqlite < links.sql
+chown www-data storage/database.sqlite
+````
+
 ## Colophon
 
-The backend uses the [Lumen PHP micro framework](http://lumen.laravel.com/). The responsive admin interface is styled with [Skeleton](http://getskeleton.com/) and uses a simple REST interface. A middleware authenticates against the Chefkoch API. The admin frontend uses [jQuery](http://jquery.com/) and [RiotJS](https://muut.com/riotjs/) to provide a login screen and a list with mappings. The list itself is content editable to provide for in-place updates.   
+The backend uses the [Lumen PHP micro framework](http://lumen.laravel.com/). The responsive admin interface is styled with [Skeleton](http://getskeleton.com/) and uses a simple REST interface. A middleware authenticates against the Chefkoch API. The admin frontend uses [jQuery](http://jquery.com/) and [RiotJS](https://muut.com/riotjs/) to provide a login screen and a list with mappings. The list itself is content editable to provide for in-place updates.
