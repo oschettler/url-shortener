@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>CIS URL Shortener</title>
+        <title>MAG URL Shortener</title>
         <meta name="author" content="Olav Schettler <olav@schettler.net>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
@@ -12,7 +12,7 @@
 
         <div class="container">
 
-            <h1>CIS URL Shortener</h1>
+            <h1>MAG URL Shortener</h1>
 
             <form id="login" class="row hidden">
                 <div class="well offset-by-three six columns">
