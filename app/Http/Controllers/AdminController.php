@@ -25,7 +25,7 @@ class AdminController extends Controller {
         $input = $request->only('key', 'target');
         $link = new Link;
         $link->key = $input['key'];
-        $link->target = $input['target'];
+        $link->target = html_entity_decode($input['target']);
         $link->save();
         return response()->json([true, $input]);
     }
@@ -34,7 +34,7 @@ class AdminController extends Controller {
         $input = $request->only('key', 'target');
         $link = Link::where('key', '=', $key)->firstOrFail();
         $link->key = $input['key'];
-        $link->target = $input['target'];
+        $link->target = html_entity_decode($input['target']);
         $link->save();
         return response()->json([true, $key, $input]);
     }
